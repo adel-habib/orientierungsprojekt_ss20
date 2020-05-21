@@ -1,0 +1,243 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:orientierungsprojektss20/subscription_pages/PricingPage.dart';
+import 'package:orientierungsprojektss20/utilities/constants.dart';
+import 'package:orientierungsprojektss20/InputScreens/OldDesign/stInputPage.dart';
+import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
+import 'package:orientierungsprojektss20/ResultsScreens/ResultPage.dart';
+import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+class RdInputPage extends StatefulWidget {
+  static String id='LastInputPage';
+
+  @override
+  _RdInputPageState createState() => _RdInputPageState();
+}
+
+class _RdInputPageState extends State<RdInputPage> {
+  final _formKey = GlobalKey<FormState>();
+  final _2formKey = GlobalKey<FormState>();
+
+  bool check = true;
+  int current=100;
+  int bTemp=50;
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Icon(Icons.menu),
+          title: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(right: 4.0),
+                child: SvgPicture.asset(
+                  kHtwLogoIcon,
+                  height: 17,
+                  color: Color(0xffFAA31B),
+                ),
+              ),
+              Text(
+                'Thermal Calculator',
+                style: TextStyle(fontSize: 20),
+              )
+            ],
+          ),
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Calculate Temprature', icon: Icon(Icons.whatshot, ),),
+              Tab(text: 'Calculate Current',icon: Icon(Icons.offline_bolt,),),
+            ],
+          ),
+        ),
+        body: TabBarView(
+      children: [
+      SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              SizedBox(height: 40,),
+              Center(child: Container(
+                color: kInactiveCardColour,
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text('Current', style: TextStyle(fontSize: 20, color: Colors.white),),
+                ),
+              ),),
+              Center(child: Form(
+                key: _formKey,
+                child: Padding(
+                  padding: const EdgeInsets.all(40),
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    inputFormatters:[
+                      LengthLimitingTextInputFormatter(4),WhitelistingTextInputFormatter.digitsOnly
+                    ],
+                    decoration: InputDecoration(
+                      errorStyle: TextStyle(fontSize: 18),
+                      helperStyle: TextStyle(fontSize: 15, color: Colors.white),
+                      labelStyle: TextStyle(fontSize: 20,),
+                      suffixStyle: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 20),
+                      suffixText: 'A',
+                      labelText: 'The Current in A',
+                      helperText: '0... 10000 A',
+                    ),
+                    onSaved: (value) => setState(()=>
+                    current=int.parse(value)),
+                    // The validator receives the text that the user has entered.
+                    validator: (value) {
+                      if (checkCurrent(value)) {
+                        return 'Invalid Current Value';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+              ),),
+              SizedBox(height: 160,),
+              ProgressIdicator(currentStep: 9,),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('Back'),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    color: kInactiveCardColour,
+                  ),
+                  FlatButton(
+                    child: Text('Next'),
+                    onPressed: (){
+                      _formKey.currentState.validate();
+                      _formKey.currentState.save();
+                      if(!checkCurrent(current.toString()))
+                        {
+                          // Navigate only if the value of the current is valid
+                          print('The current is: $current');
+                          globals.current=current;
+                          Navigator.pushNamed(context, ResultsPage.id);
+                        }
+
+                      else
+                        current=current;
+
+                    },
+                    color: kInactiveCardColour,
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+        SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: 40,),
+                Center(child: Container(
+                  color: kInactiveCardColour,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Text('Temperature', style: TextStyle(fontSize: 20, color: Colors.white),),
+                  ),
+                ),),
+                Center(child: Form(
+                  key: _2formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters:[
+                        LengthLimitingTextInputFormatter(3)
+                      ],
+                      decoration: InputDecoration(
+                        errorStyle: TextStyle(fontSize: 18),
+                        helperStyle: TextStyle(fontSize: 15, color: Colors.white),
+                        labelStyle: TextStyle(fontSize: 20,),
+                        suffixStyle: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 20),
+                        suffixText: '°C',
+                        labelText: 'The Temperature in °C',
+                        helperText: '-10... 120 °C',
+                      ),
+                      // The validator receives the text that the user has entered.
+                      validator: (value) {
+                        if (checkTemp(value)) {
+                          return 'Invalid Temperature Value';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) => setState(()=>
+                      bTemp=int.parse(value)),
+                    ),
+                  ),
+                ),),
+                SizedBox(height: 160,),
+                ProgressIdicator(currentStep: 9,),
+                SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    FlatButton(
+                      child: Text('Back'),
+                      onPressed: (){
+                        Navigator.pop(context);
+                      },
+                      color: kInactiveCardColour,
+                    ),
+                    FlatButton(
+                      child: Text('Next'),
+                      onPressed: (){
+                        _2formKey.currentState.validate();
+                        _2formKey.currentState.save();
+                        print(bTemp);
+                        if(!checkTemp(bTemp.toString())) // Navigate only if the value of the current is valid
+                          {
+                            // Navigate only if the value of the Temperature is valid
+                            print('The Temperature is: $bTemp');
+                            globals.temperature=bTemp;
+                            Navigator.pushNamed(context, ResultsPage.id,);
+
+                        }
+                        else
+                          bTemp=bTemp;
+
+                      },
+                      color: kInactiveCardColour,
+                    )
+                  ],
+                ),
+
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+
+
+      ),
+    );
+  }
+  bool checkCurrent(String val){
+    if(val.isEmpty||int.parse(val)>10000||int.parse(val)<=0)
+      return true;
+    else
+      return false;
+  }
+  bool checkTemp(String val){
+    if(val.isEmpty||int.parse(val)>120||int.parse(val)<=-10)
+      return true;
+    else
+      return false;
+  }
+}

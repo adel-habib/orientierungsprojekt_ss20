@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "563964142583",
+    "firebase_url": "https://orientierungsprojekt.firebaseio.com",
+    "project_id": "orientierungsprojekt",
+    "storage_bucket": "orientierungsprojekt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563964142583:android:d21d65f71cba743b7084f2",
+        "android_client_info": {
+          "package_name": "com.example.orientierungsprojektss20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563964142583-uj8ecu18p3hr3fm4e31n9s08t0juielp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_6mXP2uQdDyuTTgeUYGYsaPcBn4O0rno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563964142583-uj8ecu18p3hr3fm4e31n9s08t0juielp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
