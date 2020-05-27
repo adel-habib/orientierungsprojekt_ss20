@@ -34,26 +34,22 @@ class _EnclosurePageState extends State<EnclosurePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Expanded(
-            child: EntryCard(
-              cardChild: Padding(
-                padding: EdgeInsets.only(top:15, right: 15, left:15, bottom: 1),
+            child: Padding(
+                padding: EdgeInsets.only(top:15, right: 15, left:15, bottom: 5),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(2),
-                      child: Center(
-                          child: Container(
-                            color: kInactiveCardColour,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                        'Enclosure',
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      ),
-                            ),
-                          )),
+                    Center(
+                        child: Container(
+                          color: kInactiveCardColour,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                      'Enclosure',
+                      style: TextStyle(color: Colors.white, fontSize: 25),
                     ),
+                          ),
+                        )),
                     SizedBox(height: 25,),
                     Container(
                       width: double.infinity,
@@ -62,12 +58,13 @@ class _EnclosurePageState extends State<EnclosurePage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Text(
                               'Enclosure: ',
                               style: TextStyle(fontSize: 17),
                             ),
+                            SizedBox(width: 160,),
                             AnimatedContainer(
                               duration: Duration(milliseconds: 500),
                               height: 30,
@@ -128,87 +125,95 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             Container(
                               width: double.infinity,
                               color: kInactiveCardColour,
-                              child:Row(
-                                children: <Widget>[
-                                  Text('Enclosure from inside:', style: TextStyle(fontSize: 17)),
-                                  Wrap(
-                                    spacing: 10,
-                                    children: List<Widget>.generate(
-                                      2,
-                                          (int index) {
-                                        return ChoiceChip(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(5)),
-                                          selectedColor: kActiveSwitchColor,
-                                          labelStyle: TextStyle(fontSize: 15),
-                                          label: Text(myChoices[index]),
-                                          selected: _valueInside == index,
-                                          onSelected: (bool selected) {
-                                            setState(() {
-                                              _valueInside = selected ? index : index;
-                                              _valueInside == 0
-                                                  ? insideOverlay = true
-                                                  : insideOverlay = false;
-                                              globals.insideOverlay =
-                                                  insideOverlay;
-                                              insideOverlay
-                                                  ? print(
-                                                  'Painted From inside')
-                                                  : print(
-                                                  'blank from inside');
-                                            });
-                                          },
-                                        );
-                                      },
-                                    ).toList(),
-                                  ),
-                                ],
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              child:Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: <Widget>[
+                                    Text('Enclosure from inside:', style: TextStyle(fontSize: 17)),
+                                    SizedBox(width: 30,),
+                                    Wrap(
+                                      spacing: 10,
+                                      children: List<Widget>.generate(
+                                        2,
+                                            (int index) {
+                                          return ChoiceChip(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5)),
+                                            selectedColor: kActiveSwitchColor,
+                                            labelStyle: TextStyle(fontSize: 15),
+                                            label: Text(myChoices[index]),
+                                            selected: _valueInside == index,
+                                            onSelected: (bool selected) {
+                                              setState(() {
+                                                _valueInside = selected ? index : index;
+                                                _valueInside == 0
+                                                    ? insideOverlay = true
+                                                    : insideOverlay = false;
+                                                globals.insideOverlay =
+                                                    insideOverlay;
+                                                insideOverlay
+                                                    ? print(
+                                                    'Painted From inside')
+                                                    : print(
+                                                    'blank from inside');
+                                              });
+                                            },
+                                          );
+                                        },
+                                      ).toList(),
+                                    ),
+                                  ],
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                ),
                               ),
                             ),
                             SizedBox(height: 5,),
                             Container(
                               width: double.infinity,
                               color: kInactiveCardColour,
-                              child:Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text('Enclosure from outside: ', style: TextStyle(fontSize: 17)),
-                                  Wrap(
-                                    spacing: 10,
-                                    children: List<Widget>.generate(
-                                      2,
-                                          (int index) {
-                                        return ChoiceChip(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                              BorderRadius.circular(5)),
-                                          selectedColor: kActiveSwitchColor,
-                                          labelStyle: TextStyle(fontSize: 15),
-                                          label: Text(myChoices[index]),
-                                          selected: _valueOutside == index,
-                                          onSelected: (bool selected) {
-                                            setState(() {
-                                              _valueOutside = selected ? index : index;
-                                              _valueOutside == 0
-                                                  ? outsideOverlay = true
-                                                  : outsideOverlay = false;
-                                              globals.outsideOverlay =
-                                                  outsideOverlay;
-                                              outsideOverlay
-                                                  ? print(
-                                                  'Painted From Outside')
-                                                  : print(
-                                                  'blank from outside');
-                                              print(_valueOutside);
-                                            });
-                                          },
-                                        );
-                                      },
-                                    ).toList(),
-                                  ),
-                                ],
+                              child:Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text('Enclosure from outside: ', style: TextStyle(fontSize: 17)),
+                                    SizedBox(width: 16,),
+                                    Wrap(
+                                      spacing: 10,
+                                      children: List<Widget>.generate(
+                                        2,
+                                            (int index) {
+                                          return ChoiceChip(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                BorderRadius.circular(5)),
+                                            selectedColor: kActiveSwitchColor,
+                                            labelStyle: TextStyle(fontSize: 15),
+                                            label: Text(myChoices[index]),
+                                            selected: _valueOutside == index,
+                                            onSelected: (bool selected) {
+                                              setState(() {
+                                                _valueOutside = selected ? index : index;
+                                                _valueOutside == 0
+                                                    ? outsideOverlay = true
+                                                    : outsideOverlay = false;
+                                                globals.outsideOverlay =
+                                                    outsideOverlay;
+                                                outsideOverlay
+                                                    ? print(
+                                                    'Painted From Outside')
+                                                    : print(
+                                                    'blank from outside');
+                                                print(_valueOutside);
+                                              });
+                                            },
+                                          );
+                                        },
+                                      ).toList(),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ],
@@ -240,10 +245,10 @@ class _EnclosurePageState extends State<EnclosurePage> {
                       ),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 9,
                     ),
                     ProgressIdicator(currentStep: 6,),
-                    SizedBox(height: 10,),
+                    SizedBox(height: 20,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -280,7 +285,6 @@ class _EnclosurePageState extends State<EnclosurePage> {
                   ],
                 ),
               ),
-            ),
           )
         ],
       ),

@@ -3,7 +3,6 @@ import 'package:orientierungsprojektss20/InputScreens/Widgets/BackgroundCard.dar
 import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/LastInputPage.dart';
 import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
-import '../Widgets/entry_card.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
@@ -27,9 +26,8 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Expanded(
-            child: EntryCard(
-              cardChild: Padding(
-                padding: EdgeInsets.only(top:15, right: 4, left:4, bottom: 1),
+            child:  Padding(
+                padding: EdgeInsets.only(top:15, right: 15, left:15, bottom: 5),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
@@ -87,12 +85,9 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                     ),
                     SizedBox(height: 150,),
                     Center(
-                      child: Padding(
-                          padding: EdgeInsets.only(top:10.0, bottom: 10, right: 10, left: 10),
-                          child: ProgressIdicator(currentStep: 8,),
-
-                      ),
+                      child: ProgressIdicator(currentStep: 8,),
                     ),
+                    SizedBox(height: 20,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -109,6 +104,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The ambient temperature is: ${ambientTemp.toStringAsFixed(1)}');
+                            globals.ambientTemp=ambientTemp;
                             Navigator.pushNamed(context, RdInputPage.id);
                           },
                           color: kInactiveCardColour,
@@ -118,7 +114,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                   ],
                 ),
               ),
-            ),
+
           )
         ],
       ),

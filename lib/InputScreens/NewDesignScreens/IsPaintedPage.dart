@@ -3,7 +3,6 @@ import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/frequency
 import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import 'package:orientierungsprojektss20/utilities/CustomDrawer.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
-import '../Widgets/entry_card.dart';
 import '../Widgets/BackgroundCard.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,8 +30,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Expanded(
-            child: EntryCard(
-              cardChild: Padding(
+            child: Padding(
                 padding:
                     EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
                 child: Column(
@@ -156,7 +154,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                   ],
                 ),
               ),
-            ),
+
           )
         ],
       ),

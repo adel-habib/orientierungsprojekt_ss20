@@ -1,15 +1,12 @@
 import 'package:orientierungsprojektss20/InputScreens/OldDesign/stInputPage.dart';
 import 'constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 // Todo: Redesign the class using the flutter CustomPainter class to avoid using pictures
 //  and for having a more low-level control over the visual representations
 enum MaterialCA {copper, aluminum}
 
 class CustomDrawer{
   MaterialCA _selected=MaterialCA.copper;
-
-
   int _nPhase=1;
   int _nBusBars=1;
 
@@ -43,6 +40,9 @@ class CustomDrawer{
   void decreaseBusBars(){
     if(_nBusBars>1)
       _nBusBars--;
+  }
+  void longPressBusBar(){
+    _nBusBars=4;
   }
 
 

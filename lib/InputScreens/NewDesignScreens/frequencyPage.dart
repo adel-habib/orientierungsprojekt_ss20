@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/Enclosure.dart';
@@ -31,146 +32,148 @@ class _FreqPageBodyState extends State<FreqPageBody> {
   Widget build(BuildContext context) {
     return Container(
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top:15, left:15, right: 15, bottom: 0),
-              child: BackGroundCard(
-                cardChild: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 5, bottom: 5),
-                          child: Center(
-                            child: Text(
-                              'Frequency',
-                              style: TextStyle(fontSize: 25),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.baseline,
-                          textBaseline: TextBaseline.alphabetic,
-                          children: <Widget>[
-                            Text(
-                              freq.toStringAsFixed(2),
-                              style: TextStyle(
-                                fontSize: 25,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top:15, left:15, right: 15, bottom: 0),
+                child: BackGroundCard(
+                  cardChild: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, bottom: 5),
+                            child: Center(
+                              child: Text(
+                                'Frequency',
+                                style: TextStyle(fontSize: 25),
                               ),
                             ),
-                            Text(
-                              ' Hz',
-                              style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            textBaseline: TextBaseline.alphabetic,
+                            children: <Widget>[
+                              Text(
+                                freq.toStringAsFixed(2),
+                                style: TextStyle(
+                                  fontSize: 25,
+                                ),
+                              ),
+                              Text(
+                                ' Hz',
+                                style: TextStyle(color: Colors.white, fontSize: 25),
+                              ),
+                            ],
+                          ),
+                          SliderTheme(
+                            data: SliderTheme.of(context).copyWith(
+                              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10),
+                              thumbColor: Color(0xffeb1555),
+                              activeTrackColor: Colors.white,
+                              inactiveTrackColor: Colors.grey,
                             ),
-                          ],
-                        ),
-                        SliderTheme(
-                          data: SliderTheme.of(context).copyWith(
-                            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10),
-                            thumbColor: Color(0xffeb1555),
-                            activeTrackColor: Colors.white,
-                            inactiveTrackColor: Colors.grey,
+                            child: Slider(
+                              value: freq,
+                              min: minFreq.toDouble(),
+                              max: maxFreq.toDouble(),
+                              onChanged: (double newValue) {
+                                print('The Frequency is: ${freq}');
+                                setState(() {
+                                  freq = newValue;
+
+                                });
+                              },
+                            ),
                           ),
-                          child: Slider(
-                            value: freq,
-                            min: minFreq.toDouble(),
-                            max: maxFreq.toDouble(),
-                            onChanged: (double newValue) {
-                              print('The Frequency is: ${freq}');
-                              setState(() {
-                                freq = newValue;
+                          Form(
+                            child: Container(
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 40, left: 40, bottom: 5),
+                                child: TextFormField(
+                                  initialValue: freq.toStringAsFixed(2),
+                                  keyboardType: TextInputType.numberWithOptions(signed: false),
+                                  inputFormatters: [DecimalTextInputFormatter(decimalRange: 2),
+                                  ],
+                                  onChanged: (value){
+                                    if(double.parse(value)>=0 && double.parse(value)<400)
+                                      setState(() {
+                                        freq=double.parse(value);
+                                      });
 
-                              });
-                            },
-                          ),
-                        ),
-                        Form(
-                          child: Container(
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 40, left: 40, bottom: 5),
-                              child: TextFormField(
-                                initialValue: freq.toStringAsFixed(2),
-                                keyboardType: TextInputType.numberWithOptions(signed: false),
-                                inputFormatters: [DecimalTextInputFormatter(decimalRange: 2),
-                                ],
-                                onChanged: (value){
-                                  if(double.parse(value)>=0 && double.parse(value)<400)
-                                    setState(() {
-                                      freq=double.parse(value);
-                                    });
+                                  },
+                                  decoration: InputDecoration(
 
-                                },
-                                decoration: InputDecoration(
+                                    hintText: 'Write two decimal-number',
+                                    helperText: '0... 400 Hz',
+                                    labelText: 'Enter a specefic Value',
+                                    suffixText: 'Hz',
 
-                                  hintText: 'Write two decimal-number',
-                                  helperText: '0... 400 Hz',
-                                  labelText: 'Enter a specefic Value',
-                                  suffixText: 'Hz',
-
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          Padding(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-            child: BackGroundCard(
-              cardChild: Padding(
-                padding: const EdgeInsets.only(left:12.0, right: 12.0,),
-                child: CustomPaint(
-                  size: Size(double.infinity, 160),
-                    painter: SinPainter(freq),
-                  ),
+            Padding(
+              padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+              child: BackGroundCard(
+                cardChild: Padding(
+                  padding: const EdgeInsets.only(left:12.0, right: 12.0,),
+                  child: CustomPaint(
+                    size: Size(double.infinity, 160),
+                      painter: SinPainter(freq),
+                    ),
+                ),
               ),
             ),
+              SizedBox(height: 86,),
+
+
+              ProgressIdicator(currentStep: 5,),
+              SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  FlatButton(
+                    child: Text('Back'),
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
+                    color: kInactiveCardColour,
+                  ),
+                  FlatButton(
+                    child: Text('Next'),
+                    onPressed: (){
+                      print('The frequency is: ${freq.toStringAsFixed(2)}');
+                      globals.frequency=freq;
+                      Navigator.pushNamed(context, EnclosurePage.id);
+                    },
+                    color: kInactiveCardColour,
+                  )
+                ],
+              ),
+
+
+
+            ],
+
           ),
-
-
-            Padding(
-              padding: const EdgeInsets.only(top: 110.0, left: 19, right: 19),
-              child: ProgressIdicator(currentStep: 5,),
-            ),
-            SizedBox(height: 20,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                FlatButton(
-                  child: Text('Back'),
-                  onPressed: (){
-                    Navigator.pop(context);
-                  },
-                  color: kInactiveCardColour,
-                ),
-                FlatButton(
-                  child: Text('Next'),
-                  onPressed: (){
-                    print('The frequency is: ${freq.toStringAsFixed(2)}');
-                    globals.frequency=freq;
-                    Navigator.pushNamed(context, EnclosurePage.id);
-                  },
-                  color: kInactiveCardColour,
-                )
-              ],
-            ),
-
-
-
-          ],
-
         ),
       ),
     );

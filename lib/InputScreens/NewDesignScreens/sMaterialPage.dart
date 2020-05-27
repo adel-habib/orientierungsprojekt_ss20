@@ -55,11 +55,9 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                children: <Widget>[
                                  Text('Copper', style: TextStyle(fontSize: 22),),
                                 SizedBox(height: 30,),
-                                Transform.rotate(angle: 90 * pi/180,
-                                    child: SvgPicture.asset(
-                                      cDrawer.displayBusBarsWithArgument(globals.numberOfBars),
-                                      height: 100, color: kCopperColor,)
-                                ),
+                                SvgPicture.asset(
+                                  cDrawer.displayBusBarsWithArgument(globals.numberOfBars),
+                                  height: 100, color: kCopperColor,),
                                 SizedBox(height: 20,)
                                 // Icon(Icons.view_week, size: 100, color: kCopperColor,)
                                ],
@@ -86,10 +84,8 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                children: <Widget>[
                                  Text('Aluminum', style: TextStyle(fontSize: 22),),
                                  SizedBox(height: 30,),
-                                 Transform.rotate(angle: 90 * pi/180,
-                                     child: SvgPicture.asset(
-                                       cDrawer.displayBusBarsWithArgument(globals.numberOfBars), height: 100, color: kAluColor,)
-                                 ),
+                                 SvgPicture.asset(
+                                   cDrawer.displayBusBarsWithArgument(globals.numberOfBars), height: 100, color: kAluColor,),
                                  SizedBox(height: 20,)
                                ],
                              ),

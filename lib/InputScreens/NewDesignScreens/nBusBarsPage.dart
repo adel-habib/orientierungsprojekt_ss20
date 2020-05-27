@@ -72,6 +72,13 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                         children: <Widget>[
                           RoundedButton(
                             icon: Icons.add,
+                            onLongPress: (){
+                              setState(() {
+                                cDrawer.longPressBusBar();
+                                numberOfBusBars=cDrawer.getNumberOfBusBars();
+                              });
+                              print('The Number of Busbars is: $numberOfBusBars');
+                            },
                             onPress: () {
                               setState(() {
                                 cDrawer.increaseBusBars();

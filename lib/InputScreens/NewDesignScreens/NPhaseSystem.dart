@@ -42,7 +42,8 @@ class _NPhasePageState extends State<NPhasePage> {
                     SizedBox(height: 100,),
                     CustomPaint(
                       size: Size(340,100),
-                      painter: PhasePainter(cDrawer.getNumberOfPhase()),
+                      painter: PhasePainter(cDrawer.getNumberOfPhase(),
+                      ),
                     ),
                     SizedBox(height: 70,),
                     Text(cDrawer.getNumberOfPhase().toString(),

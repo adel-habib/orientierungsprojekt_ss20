@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 import 'package:orientierungsprojektss20/subscription_pages/PricingPage.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
 import 'package:orientierungsprojektss20/InputScreens/OldDesign/stInputPage.dart';
@@ -28,8 +29,8 @@ class _RdInputPageState extends State<RdInputPage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        drawer: MyDrawer(),
         appBar: AppBar(
-          leading: Icon(Icons.menu),
           title: Row(
             children: <Widget>[
               Padding(
@@ -76,7 +77,7 @@ class _RdInputPageState extends State<RdInputPage> {
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     inputFormatters:[
-                      LengthLimitingTextInputFormatter(4),WhitelistingTextInputFormatter.digitsOnly
+                      LengthLimitingTextInputFormatter(5),WhitelistingTextInputFormatter.digitsOnly
                     ],
                     decoration: InputDecoration(
                       errorStyle: TextStyle(fontSize: 18),
@@ -99,9 +100,9 @@ class _RdInputPageState extends State<RdInputPage> {
                   ),
                 ),
               ),),
-              SizedBox(height: 160,),
+              SizedBox(height: 150,),
               ProgressIdicator(currentStep: 9,),
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -181,9 +182,9 @@ class _RdInputPageState extends State<RdInputPage> {
                     ),
                   ),
                 ),),
-                SizedBox(height: 160,),
+                SizedBox(height: 150,),
                 ProgressIdicator(currentStep: 9,),
-                SizedBox(height: 10,),
+                SizedBox(height: 20,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[

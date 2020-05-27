@@ -38,7 +38,7 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
       drawer: MyDrawer(),
       appBar: myAppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
 
           Padding(
@@ -53,15 +53,14 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
           ),
 
           Expanded(
-            child: EntryCard(
-              cardChild: Padding(
-                padding: EdgeInsets.only(top:15,  bottom: 5),
+            child: Padding(
+                padding: EdgeInsets.only(top:15.0, right: 15, left: 15, bottom: 5),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(top: 20, bottom: 20),
+                        padding: const EdgeInsets.only(top: 20, bottom: 25),
                         child: Form(
                           key: _formKey,
                           autovalidate: false,
@@ -193,7 +192,7 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
                   ),
                 ),
               ),
-            ),
+
           )
         ],
       ),

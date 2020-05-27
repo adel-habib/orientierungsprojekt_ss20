@@ -33,18 +33,17 @@ class _EnclosurePerimeterPageState extends State<EnclosurePerimeterPage> {
       drawer: MyDrawer(),
       appBar: myAppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Expanded(
-            child: EntryCard(
-              cardChild: Padding(
-                padding: EdgeInsets.only(top:15, right: 15, left:15, bottom: 1),
+            child: Padding(
+                padding: EdgeInsets.only(top:15, right: 15, left:15, bottom: 0),
                 child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(left:20, right: 20, bottom: 15, top: 10),
+                        padding: const EdgeInsets.only(left:20, right: 20, bottom: 5, top: 10),
                         child: Center(
                             child: Container(
                               color: kInactiveCardColour,
@@ -103,7 +102,7 @@ class _EnclosurePerimeterPageState extends State<EnclosurePerimeterPage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 241,),
+                      SizedBox(height: 255,),
                       ProgressIdicator(currentStep: 7,),
                       SizedBox(height: 20,),
                       Row(
@@ -139,7 +138,6 @@ class _EnclosurePerimeterPageState extends State<EnclosurePerimeterPage> {
                   ),
                 ),
               ),
-            ),
           )
         ],
       ),
