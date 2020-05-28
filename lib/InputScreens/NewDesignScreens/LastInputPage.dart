@@ -22,8 +22,8 @@ class _RdInputPageState extends State<RdInputPage> {
   final _2formKey = GlobalKey<FormState>();
 
   bool check = true;
-  int current=100;
-  int bTemp=50;
+  int current=1000;
+  int bTemp=65;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -75,6 +75,7 @@ class _RdInputPageState extends State<RdInputPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(40),
                   child: TextFormField(
+                    initialValue: '1000',
                     keyboardType: TextInputType.number,
                     inputFormatters:[
                       LengthLimitingTextInputFormatter(5),WhitelistingTextInputFormatter.digitsOnly
@@ -162,6 +163,7 @@ class _RdInputPageState extends State<RdInputPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(40.0),
                     child: TextFormField(
+                      initialValue: '65',
                       keyboardType: TextInputType.number,
                       inputFormatters:[
                         LengthLimitingTextInputFormatter(3)

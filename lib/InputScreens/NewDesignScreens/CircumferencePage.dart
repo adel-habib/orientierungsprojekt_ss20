@@ -15,7 +15,7 @@ class EnclosurePerimeterPage extends StatefulWidget {
 }
 
 class _EnclosurePerimeterPageState extends State<EnclosurePerimeterPage> {
-  final enclosurePerimeterController = TextEditingController();
+  final enclosurePerimeterController = TextEditingController(text: '1');
   final _formKey = GlobalKey<FormState>();
   double enclosurePerimeter = 1;
   bool validateHeight(String val) {return !(val.isEmpty || double.parse(val) < 0.5 || double.parse(val) > 10);}

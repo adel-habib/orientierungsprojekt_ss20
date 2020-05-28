@@ -16,8 +16,8 @@ class WidthHeightPage extends StatefulWidget {
 }
 
 class _WidthHeightPageState extends State<WidthHeightPage> {
-  final heightController = TextEditingController();
-  final widthController = TextEditingController();
+  final heightController = TextEditingController(text: '100');
+  final widthController = TextEditingController(text: '10');
   final _formKey = GlobalKey<FormState>();
   int width = 10;
   int height = 100;

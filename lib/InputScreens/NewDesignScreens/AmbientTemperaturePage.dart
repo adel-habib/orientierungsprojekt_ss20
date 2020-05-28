@@ -14,7 +14,7 @@ class AmbientTemperaturePage extends StatefulWidget {
 }
 
 class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
-  double ambientTemp = 20;
+  double ambientTemp = 35;
 
 
   @override
