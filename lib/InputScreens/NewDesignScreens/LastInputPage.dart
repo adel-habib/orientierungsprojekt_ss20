@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:orientierungsprojektss20/ResultsScreens/ResultPage.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 class RdInputPage extends StatefulWidget {
   static String id='LastInputPage';
 
@@ -122,7 +122,12 @@ class _RdInputPageState extends State<RdInputPage> {
                         {
                           // Navigate only if the value of the current is valid
                           print('The current is: $current');
-                          globals.current=current;
+                          tCalculator.parameters.setCurrent(current: current);
+
+                          //Here Implement the Calculations
+                          tCalculator.parameters.performThermalCalculations();
+
+
                           Navigator.pushNamed(context, ResultsPage.id);
                         }
 
@@ -205,7 +210,6 @@ class _RdInputPageState extends State<RdInputPage> {
                           {
                             // Navigate only if the value of the Temperature is valid
                             print('The Temperature is: $bTemp');
-                            globals.temperature=bTemp;
                             Navigator.pushNamed(context, ResultsPage.id,);
 
                         }
@@ -241,4 +245,5 @@ class _RdInputPageState extends State<RdInputPage> {
     else
       return false;
   }
+
 }

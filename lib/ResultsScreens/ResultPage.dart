@@ -7,13 +7,13 @@ import 'package:pdf/widgets.dart' as pw;
 import 'dart:io';
 import 'ResultsPreview.dart';
 import 'dart:math';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as ThermalCalculator;
 import 'package:orientierungsprojektss20/utilities/CustomDrawer.dart';
 
 //todo: design the pdf here that displays the results here
 
 class ResultsPage extends StatelessWidget {
-  // an Example
+  // an Example you can emulate
   final pdf = pw.Document();
   final String svgPicAdd='assets/bildung.svg';
   writePdf(){
@@ -38,15 +38,19 @@ class ResultsPage extends StatelessWidget {
           pw.SizedBox(height: 10),
           pw.Bullet(
               text:
-              'Area= ${globals.height.toString()} x ${globals.width.toString()}=${globals.height * globals.width}'
+              'Area= ${ThermalCalculator.parameters.getHeight().toString()} x ${ThermalCalculator.parameters.getWidth().toString()}='
+                  '${ThermalCalculator.parameters.getHeight() * ThermalCalculator.parameters.getWidth()}'
           ,style: pw.TextStyle(fontSize: 30)),
           pw.Bullet(
               text:
               'Sking factor = (f\/50) * Area^5 = '
-                  '${((globals.frequency.round()/50)*pow((globals.height * globals.width),5)).toStringAsFixed(4)}',
+                  '${((ThermalCalculator.parameters.getFrequency().round()/50)*pow((ThermalCalculator.parameters.getHeight() *
+                  ThermalCalculator.parameters.getWidth()),5)).toStringAsFixed(4)}',
               style: pw.TextStyle(fontSize: 30)),
-          pw.Bullet( text: 'Temperature = Current x Ambient Temperature = ' '${globals.current} x ${globals.ambientTemp} '
-              '=${globals.current*globals.ambientTemp.round()} ', style: pw.TextStyle(fontSize: 30)),
+          pw.Bullet( text: 'Temperature = Current x Ambient Temperature = '
+              '${ThermalCalculator.parameters.getAmbientTemperature()} x ${ThermalCalculator.parameters.getAmbientTemperature()} '
+              '=${ThermalCalculator.parameters.getCurrent()*ThermalCalculator.parameters.getAmbientTemperature().round()}'
+              '', style: pw.TextStyle(fontSize: 30)),
 
         ];
       }
@@ -110,79 +114,85 @@ class ResultsPage extends StatelessWidget {
                     DataRow(
                       cells: [
                         DataCell(Text('Number of Busbars'),),
-                        DataCell(Text('${globals.numberOfBars.toString()}'),)
+                        DataCell(Text('${ThermalCalculator.parameters.getNumberOfBusBars().toString()}'),)
                       ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Phase System'),),
-                          DataCell(Text('${globals.phase.toString()}'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getPhase().toString()}'),)
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Material'),),
-                          DataCell(Text(globals.selectedMaterial==MaterialCA.copper?'Copper':'Aluminum'),)
+                          DataCell(Text(ThermalCalculator.parameters.getSelectedMaterial()==MaterialCA.copper?'Copper':'Aluminum'),)
 
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Surface of the Busbar'),),
-                          DataCell(Text(globals.barOverlay==true?'Painted':'Blank')),
+                          DataCell(Text(ThermalCalculator.parameters.getBusBarOverlay()==true?'Painted':'Blank')),
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Height'),),
-                          DataCell(Text('${globals.height.toString()} mm'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getHeight().toString()} mm'),)
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Width'),),
-                          DataCell(Text('${globals.width.toString()} mm'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getWidth().toString()} mm'),)
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Frequency'),),
-                          DataCell(Text('${globals.frequency.toStringAsFixed(2)} Hz'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getFrequency().toStringAsFixed(2)} Hz'),)
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Ambient Temperature'),),
-                          DataCell(Text('${globals.ambientTemp.toStringAsFixed(1)} °C'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getAmbientTemperature().toStringAsFixed(1)} °C'),)
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Current'),),
-                          DataCell(Text('${globals.current.toString()} A'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getCurrent().toString()} A'),)
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Enclosure'),),
-                          DataCell(Text(globals.enclosure?'Yes':'No'),)
+                          DataCell(Text(ThermalCalculator.parameters.getEnclosure()?'Yes':'No'),)
                         ]
                     ),
-                    globals.enclosure?DataRow(
+                    ThermalCalculator.parameters.getEnclosure()?DataRow(
                         cells: [
                           DataCell(Text('Inside Surface of Enclosure'),),
-                          DataCell(Text(globals.insideOverlay==true?'Painted':'Blank'),)
+                          DataCell(Text(ThermalCalculator.parameters.getInsideOverlay()==true?'Painted':'Blank'),)
                         ]
                     ):DataRow(
                         cells: [DataCell(Text('')),DataCell(Text(''))]
                     ),
-                    globals.enclosure?DataRow(
+                    ThermalCalculator.parameters.getEnclosure()?DataRow(
                         cells: [
                           DataCell(Text('Outside Surface of Enclosure'),),
-                          DataCell(Text(globals.outsideOverlay==true?'Painted':'Blank'),)
+                          DataCell(Text(ThermalCalculator.parameters.getOutsideOverlay()==true?'Painted':'Blank'),)
                         ]
                     ):DataRow(
                       cells: [DataCell(Text('')),DataCell(Text(''))]
+                    ),
+                    DataRow(
+                        cells: [
+                          DataCell(Text('Final Temperature'),),
+                          DataCell(Text('${ThermalCalculator.parameters.getFinalTemperature()}'),)
+                        ]
                     ),
 
 

@@ -5,7 +5,7 @@ import 'package:orientierungsprojektss20/utilities/CustomDrawer.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
 import '../Widgets/entry_card.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 class EnclosurePage extends StatefulWidget {
@@ -50,7 +50,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                     ),
                           ),
                         )),
-                    SizedBox(height: 25,),
+                    SizedBox(height: 15,),
                     Container(
                       width: double.infinity,
                       color: kInactiveCardColour,
@@ -150,8 +150,6 @@ class _EnclosurePageState extends State<EnclosurePage> {
                                                 _valueInside == 0
                                                     ? insideOverlay = true
                                                     : insideOverlay = false;
-                                                globals.insideOverlay =
-                                                    insideOverlay;
                                                 insideOverlay
                                                     ? print(
                                                     'Painted From inside')
@@ -198,8 +196,6 @@ class _EnclosurePageState extends State<EnclosurePage> {
                                                 _valueOutside == 0
                                                     ? outsideOverlay = true
                                                     : outsideOverlay = false;
-                                                globals.outsideOverlay =
-                                                    outsideOverlay;
                                                 outsideOverlay
                                                     ? print(
                                                     'Painted From Outside')
@@ -219,7 +215,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                           ],
                         )
                         : SizedBox(height: 122,),
-                    SizedBox(height: 10),
+                    SizedBox(height: 5),
                     Padding(
                       padding: const EdgeInsets.only(top:10, bottom: 10, left: 30, right: 30 ),
                       child: Container(
@@ -236,9 +232,10 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             ),
                             child: SvgPicture.asset(
                               cDrawer.displayBusBarsWithArgument(
-                                  globals.numberOfBars),
-                              height: 140,
-                              color: globals.barOverlay?Colors.grey:globals.selectedMaterial==MaterialCA.copper?kCopperColor:kAluColor,
+                                  tCalculator.parameters.getNumberOfBusBars()),
+                              height: 100,
+                              color: tCalculator.parameters.getBusBarOverlay()?Colors.grey:tCalculator.parameters.getSelectedMaterial()
+                                  ==MaterialCA.copper?kCopperColor:kAluColor,
                             ),
                           ),
                         ),
@@ -248,7 +245,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                       height: 9,
                     ),
                     ProgressIdicator(currentStep: 6,),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 10,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -265,16 +262,9 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             print('Enclosure: $enclosure');
                             print('Outside Overlay: $outsideOverlay');
                             print('Inside Overlay: $insideOverlay');
-                            globals.enclosure=enclosure;
-                            if (enclosure == false) {
-                              insideOverlay = false;
-                              outsideOverlay = false;
-                            }
-                            else{
-                              globals.insideOverlay=insideOverlay;
-                            globals.outsideOverlay=outsideOverlay;
-                            }
-
+                            tCalculator.parameters.setEnclosure(enclosure: enclosure);
+                            tCalculator.parameters.setInsideOverlay(insideOverlay: insideOverlay);
+                            tCalculator.parameters.setOutsideOverlay(outsideOverlay: outsideOverlay);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => EnclosurePerimeterPage()),);},

@@ -6,7 +6,7 @@ import 'package:orientierungsprojektss20/utilities/constants.dart';
 import '../Widgets/entry_card.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:flutter/services.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class WidthHeightPage extends StatefulWidget {
@@ -93,7 +93,7 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
                                         ],
                                         validator: (value) {
                                           if (!validateHeight(value))
-                                            return 'Invalid Height';
+                                            return 'Invalid Height, 10... 200 mm';
                                         },
                                         onSaved: (value) => setState(() =>
                                         validateHeight(value)
@@ -130,7 +130,7 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
                                         ],
                                         validator: (value) {
                                           if (!validateWidth(value))
-                                            return 'Invalid Width';
+                                            return 'Invalid Width, 5... 15 mm';
                                         },
                                         onSaved: (value) => setState(() =>
                                         validateWidth(value)
@@ -175,8 +175,8 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
                                   validateWidth(widthController.text)) {
                                 print('Height of the Busbar: $height cm');
                                 print('Width of the Busbar: $width cm');
-                                globals.height=height;
-                                globals.width=width;
+                                tCalculator.parameters.setHeight(height: height);
+                                tCalculator.parameters.setWidth(width: width);
                                 Navigator.pushNamed(context, IsPaintedPage.id);
                               }
                               else{

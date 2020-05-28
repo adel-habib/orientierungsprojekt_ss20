@@ -6,7 +6,7 @@ import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import '../Widgets/BackgroundCard.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
 import 'dart:math';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
@@ -27,7 +27,7 @@ class FreqPageBody extends StatefulWidget {
 }
 
 class _FreqPageBodyState extends State<FreqPageBody> {
-  double freq=100.97;
+  double freq=50.00;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -161,7 +161,7 @@ class _FreqPageBodyState extends State<FreqPageBody> {
                     child: Text('Next'),
                     onPressed: (){
                       print('The frequency is: ${freq.toStringAsFixed(2)}');
-                      globals.frequency=freq;
+                      tCalculator.parameters.setFrequency(frequency: freq);
                       Navigator.pushNamed(context, EnclosurePage.id);
                     },
                     color: kInactiveCardColour,

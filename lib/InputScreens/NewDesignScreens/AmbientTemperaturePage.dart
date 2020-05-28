@@ -4,7 +4,7 @@ import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/LastInput
 import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class AmbientTemperaturePage extends StatefulWidget {
@@ -44,7 +44,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 180,),
+                    SizedBox(height: 140,),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -78,12 +78,11 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                         onChanged: (double newValue) {
                           setState(() {
                             ambientTemp = newValue;
-                            globals.ambientTemp=ambientTemp;
                           });
                         },
                       ),
                     ),
-                    SizedBox(height: 150,),
+                    SizedBox(height: 100,),
                     Center(
                       child: ProgressIdicator(currentStep: 8,),
                     ),
@@ -104,7 +103,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The ambient temperature is: ${ambientTemp.toStringAsFixed(1)}');
-                            globals.ambientTemp=ambientTemp;
+                            tCalculator.parameters.setAmbientTemperature(ambientTemperature: ambientTemp);
                             Navigator.pushNamed(context, RdInputPage.id);
                           },
                           color: kInactiveCardColour,

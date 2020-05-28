@@ -6,7 +6,7 @@ import 'package:orientierungsprojektss20/utilities/constants.dart';
 import '../Widgets/BackgroundCard.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class IsPaintedPage extends StatefulWidget {
@@ -48,7 +48,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                       ),
                     )),
                     SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(0),
@@ -89,8 +89,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                                               _value == 0
                                                   ? busbarOverlay = true
                                                   : busbarOverlay = false;
-                                              globals.barOverlay =
-                                                  busbarOverlay;
+                                              tCalculator.parameters.setBusBarOverlay(busBarOverlay: busbarOverlay);
                                               busbarOverlay
                                                   ? print(
                                                       'The Busbars are painted')
@@ -109,14 +108,14 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 50,),
+                    SizedBox(height: 15,),
                     Container(
                       width: double.infinity,
                       child: Column(
                         children: <Widget>[
                           SvgPicture.asset(
                             cDrawer.displayBusBarsWithArgument(
-                                globals.numberOfBars),
+                                tCalculator.parameters.getNumberOfBusBars()),
                             height: 140,
                             color: barColor(),
                           ),
@@ -124,7 +123,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 80,
+                      height: 50,
                     ),
                     ProgressIdicator(
                       currentStep: 4,
@@ -145,6 +144,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                         FlatButton(
                           child: Text('Next'),
                           onPressed: () {
+                            tCalculator.parameters.setBusBarOverlay(busBarOverlay: busbarOverlay);
                             Navigator.pushNamed(context, FrequencyPage.id);
                           },
                           color: kInactiveCardColour,
@@ -163,7 +163,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
 
   Color barColor() {
     if(!busbarOverlay){
-      return globals.selectedMaterial==MaterialCA.copper?kCopperColor:kAluColor;
+      return tCalculator.parameters.getSelectedMaterial()==MaterialCA.copper?kCopperColor:kAluColor;
     }
     if(busbarOverlay){
       return Colors.grey;

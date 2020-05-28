@@ -6,8 +6,7 @@ import 'package:orientierungsprojektss20/utilities/constants.dart';
 import 'package:orientierungsprojektss20/utilities/CustomDrawer.dart';
 import '../Widgets/entry_card.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
-import 'dart:math';
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class SMaterialPage extends StatefulWidget {
@@ -42,7 +41,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                         child: Text('Material', style: TextStyle(color: Colors.white, fontSize: 25),),
                       ),
                     )),
-                   SizedBox(height: 130,),
+                   SizedBox(height: 90,),
                    Row(
                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                      children: <Widget>[
@@ -56,7 +55,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                  Text('Copper', style: TextStyle(fontSize: 22),),
                                 SizedBox(height: 30,),
                                 SvgPicture.asset(
-                                  cDrawer.displayBusBarsWithArgument(globals.numberOfBars),
+                                  cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNumberOfBusBars()),
                                   height: 100, color: kCopperColor,),
                                 SizedBox(height: 20,)
                                 // Icon(Icons.view_week, size: 100, color: kCopperColor,)
@@ -85,7 +84,8 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                  Text('Aluminum', style: TextStyle(fontSize: 22),),
                                  SizedBox(height: 30,),
                                  SvgPicture.asset(
-                                   cDrawer.displayBusBarsWithArgument(globals.numberOfBars), height: 100, color: kAluColor,),
+                                   cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNumberOfBusBars()),
+                                   height: 100, color: kAluColor,),
                                  SizedBox(height: 20,)
                                ],
                              ),
@@ -95,7 +95,6 @@ class _SMaterialPageState extends State<SMaterialPage> {
                              setState(() {
                                cDrawer.selectAluminum();
                                selectedMaterial=cDrawer.getSelectedMaterial();
-                               globals.selectedMaterial=selectedMaterial;
                                print('The Material is: $selectedMaterial');
 
                              });
@@ -108,7 +107,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                        ),
                      ],
                    ),
-                    SizedBox(height: 100,),
+                    SizedBox(height: 50,),
                     ProgressIdicator(currentStep: 2,),
                     SizedBox(height: 20,),
                     Row(
@@ -125,7 +124,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The Material is: $selectedMaterial');
-                            globals.selectedMaterial=selectedMaterial;
+                            tCalculator.parameters.setMaterial(selectedMaterial: selectedMaterial);
                             Navigator.pushNamed(context, WidthHeightPage.id);
                           },
                           color: kInactiveCardColour,

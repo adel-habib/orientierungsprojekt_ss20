@@ -7,7 +7,7 @@ import '../Widgets/roundedbutton.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'sMaterialPage.dart';
 import 'package:orientierungsprojektss20/utilities/PhasePainter.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as globals;
+import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class NPhasePage extends StatefulWidget {
@@ -39,13 +39,13 @@ class _NPhasePageState extends State<NPhasePage> {
                       padding: const EdgeInsets.all(12),
                       child: Text('Phase System', style: TextStyle(color: Colors.white, fontSize: 25)),
                     )),
-                    SizedBox(height: 100,),
+                    SizedBox(height: 50,),
                     CustomPaint(
                       size: Size(340,100),
                       painter: PhasePainter(cDrawer.getNumberOfPhase(),
                       ),
                     ),
-                    SizedBox(height: 70,),
+                    SizedBox(height: 30,),
                     Text(cDrawer.getNumberOfPhase().toString(),
                         style: kNumberTextStyle),
                     SizedBox(height: 20,),
@@ -96,7 +96,7 @@ class _NPhasePageState extends State<NPhasePage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The Phase is: $phase');
-                            globals.phase=phase;
+                            tCalculator.parameters.setPhase(phase: phase);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => SMaterialPage()),
