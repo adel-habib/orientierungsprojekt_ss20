@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/AmbientTemperaturePage.dart';
 import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/CircumferencePage.dart';
 import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import 'package:orientierungsprojektss20/utilities/CustomDrawer.dart';
@@ -265,9 +266,14 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             tCalculator.parameters.setEnclosure(enclosure: enclosure);
                             tCalculator.parameters.setIOverlay(insideOverlay: insideOverlay);
                             tCalculator.parameters.setOOverlay(outsideOverlay: outsideOverlay);
-                            Navigator.push(
+
+                            if(enclosure){Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => EnclosurePerimeterPage()),);},
+                              MaterialPageRoute(builder: (context) => EnclosurePerimeterPage()),);}
+                            else{
+                              Navigator.pushNamed(context, AmbientTemperaturePage.id);
+                            }
+                            },
                           color: kInactiveCardColour,
                         )
                       ],

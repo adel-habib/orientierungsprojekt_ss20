@@ -21,7 +21,7 @@ class _RdInputPageState extends State<RdInputPage> {
 
   bool check = true;
   int current=1000;
-  int bTemp=65;
+  int enteredTemp=65;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -183,7 +183,7 @@ class _RdInputPageState extends State<RdInputPage> {
                         return null;
                       },
                       onSaved: (value) => setState(()=>
-                      bTemp=int.parse(value)),
+                      enteredTemp=int.parse(value)),
                     ),
                   ),
                 ),),
@@ -205,16 +205,17 @@ class _RdInputPageState extends State<RdInputPage> {
                       onPressed: (){
                         _2formKey.currentState.validate();
                         _2formKey.currentState.save();
-                        print(bTemp);
-                        if(!checkTemp(bTemp.toString())) // Navigate only if the value of the current is valid
+                        print(enteredTemp);
+                        if(!checkTemp(enteredTemp.toString())) // Navigate only if the value of the Temp is valid
                           {
+
                             // Navigate only if the value of the Temperature is valid
-                            print('The Temperature is: $bTemp');
+                            print('The Temperature is: $enteredTemp');
                             Navigator.pushNamed(context, ResultsPage.id,);
 
                         }
                         else
-                          bTemp=bTemp;
+                          enteredTemp=enteredTemp;
 
                       },
                       color: kInactiveCardColour,
