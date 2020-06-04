@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-const int anyNumber=1;
+const int updateAnyNumber=1;
 final String k1BusBar = 'assets/busbar-1.svg';
 final String k2BusBar = 'assets/busbar-2.svg';
 final String k3BusBar = 'assets/busbar-3.svg';
