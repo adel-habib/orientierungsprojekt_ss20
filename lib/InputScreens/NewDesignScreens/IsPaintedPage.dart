@@ -6,7 +6,8 @@ import 'package:orientierungsprojektss20/utilities/constants.dart';
 import '../Widgets/BackgroundCard.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
+import 'package:orientierungsprojektss20/utilities/parameters.dart'
+    as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class IsPaintedPage extends StatefulWidget {
@@ -17,7 +18,7 @@ class IsPaintedPage extends StatefulWidget {
 
 class _IsPaintedPageState extends State<IsPaintedPage> {
   final cDrawer = CustomDrawer();
-  bool busbarOverlay=false;
+  bool busbarOverlay = false;
   int _value = 1;
   List<String> myChoices = ['Painted', 'Blank'];
 
@@ -31,130 +32,133 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
         children: <Widget>[
           Expanded(
             child: Padding(
-                padding:
-                    EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Center(
-                        child: Container(
-                      color: kInactiveCardColour,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Text(
-                          'Surface',
-                          style: TextStyle(color: Colors.white, fontSize: 25),
-                        ),
+              padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Center(
+                      child: Container(
+                    color: kInactiveCardColour,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        'Surface',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
-                    )),
-                    SizedBox(
-                      height: 20,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(0),
-                      child: BackGroundCard(
-                        cardChild: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'The Busbar is',
-                                    style: TextStyle(fontSize: 20),
-                                  ),
-                                ),
-                              ),
-                              Padding(
+                  )),
+                  SizedBox(
+                    height: 55,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: BackGroundCard(
+                      cardChild: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Center(
+                              child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Center(
-                                  child: Wrap(
-                                    spacing: 10,
-                                    children: List<Widget>.generate(
-                                      2,
-                                      (int index) {
-                                        return ChoiceChip(
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(5)),
-                                          selectedColor: kActiveSwitchColor,
-                                          labelStyle: TextStyle(fontSize: 19),
-                                          label: Text(myChoices[index]),
-                                          selected: _value == index,
-                                          onSelected: (bool selected) {
-                                            setState(() {
-                                              _value = selected ? index : null;
-                                              _value == 0
-                                                  ? busbarOverlay = true
-                                                  : busbarOverlay = false;
-                                              tCalculator.parameters.setBusBarOverlay(busBarOverlay: busbarOverlay);
-                                              busbarOverlay
-                                                  ? print(
-                                                      'The Busbars are painted')
-                                                  : print(
-                                                      'The Busbars are blank');
-                                            });
-                                          },
-                                        );
-                                      },
-                                    ).toList(),
-                                  ),
+                                child: Text(
+                                  'The Busbar is',
+                                  style: TextStyle(fontSize: 20),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Center(
+                                child: Wrap(
+                                  spacing: 10,
+                                  children: List<Widget>.generate(
+                                    2,
+                                    (int index) {
+                                      return ChoiceChip(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                        selectedColor: kActiveSwitchColor,
+                                        labelStyle: TextStyle(fontSize: 19),
+                                        label: Text(myChoices[index]),
+                                        selected: _value == index,
+                                        onSelected: (bool selected) {
+                                          setState(() {
+                                            _value = selected ? index : null;
+                                            _value == 0
+                                                ? busbarOverlay = true
+                                                : busbarOverlay = false;
+                                            tCalculator.parameters.setBOverlay(
+                                                busBarOverlay: busbarOverlay);
+                                            busbarOverlay
+                                                ? print(
+                                                    'The Busbars are painted')
+                                                : print(
+                                                    'The Busbars are blank');
+                                          });
+                                        },
+                                      );
+                                    },
+                                  ).toList(),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    SizedBox(height: 15,),
-                    Container(
-                      width: double.infinity,
-                      child: Column(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            cDrawer.displayBusBarsWithArgument(
-                                tCalculator.parameters.getNumberOfBusBars()),
-                            height: 140,
-                            color: barColor(),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    ProgressIdicator(
-                      currentStep: 4,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    child: Column(
                       children: <Widget>[
-                        FlatButton(
-                          child: Text('Back'),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          color: kInactiveCardColour,
+                        SvgPicture.asset(
+                          cDrawer.displayBusBarsWithArgument(
+                              tCalculator.parameters.getNoB()
+                          ),
+                          height: 140,
+                          color: barColor(),
                         ),
-                        FlatButton(
-                          child: Text('Next'),
-                          onPressed: () {
-                            tCalculator.parameters.setBusBarOverlay(busBarOverlay: busbarOverlay);
-                            Navigator.pushNamed(context, FrequencyPage.id);
-                          },
-                          color: kInactiveCardColour,
-                        )
                       ],
-                    )
-                  ],
-                ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 100,
+                  ),
+                  ProgressIdicator(
+                    currentStep: 4,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      FlatButton(
+                        child: Text('Back'),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        color: kInactiveCardColour,
+                      ),
+                      FlatButton(
+                        child: Text('Next'),
+                        onPressed: () {
+                          tCalculator.parameters
+                              .setBOverlay(busBarOverlay: busbarOverlay);
+                          Navigator.pushNamed(context, FrequencyPage.id);
+                        },
+                        color: kInactiveCardColour,
+                      )
+                    ],
+                  )
+                ],
               ),
-
+            ),
           )
         ],
       ),
@@ -162,10 +166,12 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
   }
 
   Color barColor() {
-    if(!busbarOverlay){
-      return tCalculator.parameters.getSelectedMaterial()==MaterialCA.copper?kCopperColor:kAluColor;
+    if (!busbarOverlay) {
+      return tCalculator.parameters.getMaterial() == MaterialCA.copper
+          ? kCopperColor
+          : kAluColor;
     }
-    if(busbarOverlay){
+    if (busbarOverlay) {
       return Colors.grey;
     }
   }

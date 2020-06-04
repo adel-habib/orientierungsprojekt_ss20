@@ -16,8 +16,8 @@ const int maxFreq=400;
 const int minAmbientTemp=-10;
 const int maxAmbientTemp=50;
 
-String kwelcomeText = '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-    ', sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.\"';
+String kwelcomeText = 'The software calculates the temperature of busbar depending on their geometry,'
+    ' matirial and surface with and without enclosure related to load cutrent and its frequency.';
 
 final kTitleStyle = TextStyle(
   color: Colors.white,

@@ -232,9 +232,9 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             ),
                             child: SvgPicture.asset(
                               cDrawer.displayBusBarsWithArgument(
-                                  tCalculator.parameters.getNumberOfBusBars()),
+                                  tCalculator.parameters.getNoB()),
                               height: 100,
-                              color: tCalculator.parameters.getBusBarOverlay()?Colors.grey:tCalculator.parameters.getSelectedMaterial()
+                              color: tCalculator.parameters.getBOverlay()?Colors.grey:tCalculator.parameters.getMaterial()
                                   ==MaterialCA.copper?kCopperColor:kAluColor,
                             ),
                           ),
@@ -242,7 +242,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                       ),
                     ),
                     SizedBox(
-                      height: 9,
+                      height: 90,
                     ),
                     ProgressIdicator(currentStep: 6,),
                     SizedBox(height: 10,),
@@ -263,8 +263,8 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             print('Outside Overlay: $outsideOverlay');
                             print('Inside Overlay: $insideOverlay');
                             tCalculator.parameters.setEnclosure(enclosure: enclosure);
-                            tCalculator.parameters.setInsideOverlay(insideOverlay: insideOverlay);
-                            tCalculator.parameters.setOutsideOverlay(outsideOverlay: outsideOverlay);
+                            tCalculator.parameters.setIOverlay(insideOverlay: insideOverlay);
+                            tCalculator.parameters.setOOverlay(outsideOverlay: outsideOverlay);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => EnclosurePerimeterPage()),);},

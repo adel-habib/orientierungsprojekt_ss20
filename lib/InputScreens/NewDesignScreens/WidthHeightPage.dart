@@ -63,7 +63,7 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
                         padding: const EdgeInsets.only(top: 20, bottom: 25),
                         child: Form(
                           key: _formKey,
-                          autovalidate: false,
+                          autovalidate: true,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[

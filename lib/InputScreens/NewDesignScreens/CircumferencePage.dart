@@ -123,7 +123,7 @@ class _EnclosurePerimeterPageState extends State<EnclosurePerimeterPage> {
                               _formKey.currentState.save();
                               print('The Perimeter of the enclosire is: $enclosurePerimeter');
                               if (validateHeight(enclosurePerimeterController.text))  {
-                                tCalculator.parameters.setEnclosurePerimeter(enclosurePerimeter: enclosurePerimeter.round());
+                                tCalculator.parameters.setEnclPerimeter(enclosurePerimeter: enclosurePerimeter.round());
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => AmbientTemperaturePage()),

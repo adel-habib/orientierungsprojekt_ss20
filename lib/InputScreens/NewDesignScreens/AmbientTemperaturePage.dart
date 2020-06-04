@@ -82,7 +82,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                         },
                       ),
                     ),
-                    SizedBox(height: 100,),
+                    SizedBox(height: 190,),
                     Center(
                       child: ProgressIdicator(currentStep: 8,),
                     ),
@@ -103,7 +103,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The ambient temperature is: ${ambientTemp.toStringAsFixed(1)}');
-                            tCalculator.parameters.setAmbientTemperature(ambientTemperature: ambientTemp);
+                            tCalculator.parameters.setATemp(ambientTemperature: ambientTemp);
                             Navigator.pushNamed(context, RdInputPage.id);
                           },
                           color: kInactiveCardColour,

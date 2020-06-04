@@ -41,7 +41,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                         child: Text('Material', style: TextStyle(color: Colors.white, fontSize: 25),),
                       ),
                     )),
-                   SizedBox(height: 90,),
+                   SizedBox(height: 130,),
                    Row(
                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                      children: <Widget>[
@@ -55,7 +55,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                  Text('Copper', style: TextStyle(fontSize: 22),),
                                 SizedBox(height: 30,),
                                 SvgPicture.asset(
-                                  cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNumberOfBusBars()),
+                                  cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNoB()),
                                   height: 100, color: kCopperColor,),
                                 SizedBox(height: 20,)
                                 // Icon(Icons.view_week, size: 100, color: kCopperColor,)
@@ -84,7 +84,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                  Text('Aluminum', style: TextStyle(fontSize: 22),),
                                  SizedBox(height: 30,),
                                  SvgPicture.asset(
-                                   cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNumberOfBusBars()),
+                                   cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNoB()),
                                    height: 100, color: kAluColor,),
                                  SizedBox(height: 20,)
                                ],
@@ -107,7 +107,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                        ),
                      ],
                    ),
-                    SizedBox(height: 50,),
+                    SizedBox(height: 100,),
                     ProgressIdicator(currentStep: 2,),
                     SizedBox(height: 20,),
                     Row(

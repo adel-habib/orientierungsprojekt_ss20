@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
-import 'package:orientierungsprojektss20/subscription_pages/PricingPage.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
-import 'package:orientierungsprojektss20/InputScreens/OldDesign/stInputPage.dart';
-import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:orientierungsprojektss20/ResultsScreens/ResultPage.dart';

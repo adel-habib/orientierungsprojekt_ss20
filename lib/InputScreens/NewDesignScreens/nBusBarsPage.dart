@@ -49,18 +49,18 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 70,),
 
                     SvgPicture.asset(
                       cDrawer
                           .displayBusBars(), // The address of the SVG icon stored in String
-                      height: 110,
+                      height: 140,
                       color: cDrawer.getSelectedMaterial() ==
                           MaterialCA.copper
                           ? kCopperColor
                           : kAluColor,
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 60,),
                     Text(
                       cDrawer.getNumberOfBusBars().toString(),
                       style: kNumberTextStyle,
@@ -87,7 +87,7 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                               print('The Number of Busbars is: $numberOfBusBars');
                             },
                           ),
-                          SizedBox(width: 10,),
+                          SizedBox(width: 15,),
                           RoundedButton(
                             icon: Icons.remove,
                             onPress: () {
@@ -103,8 +103,8 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 40,),
                     ProgressIdicator(currentStep: 0,),
-                    SizedBox(height: 10,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -120,7 +120,7 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The Number of Busbars is: $numberOfBusBars');
-                            tCalculator.parameters.setNumberOfBusBars(numberOfBusBars: numberOfBusBars);
+                            tCalculator.parameters.setNOB(numberOfBusBars: numberOfBusBars);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => NPhasePage()),

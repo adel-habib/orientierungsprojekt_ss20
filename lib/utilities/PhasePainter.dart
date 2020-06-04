@@ -26,7 +26,7 @@ class PhasePainter extends CustomPainter{
       ptt = nptt;
     }
 
-    if(n>1){
+    if(n>2){
       paint.color=Colors.cyan;
       paint.strokeWidth=4;
       var pttt = Offset(0,(midY-cos(pi)*100));
@@ -38,10 +38,18 @@ class PhasePainter extends CustomPainter{
 
     }
     if(n>2){
-      paint.color=Colors.deepOrange;
-      var pt = Offset(0,midY);
+      paint.color=Colors.cyan;
+      paint.strokeWidth=4;
+      var pttt = Offset(0,(midY-cos(pi/3*2)*100));
       for(double i=0;i<size.width;i+=0.1){
-        final npt = Offset(i,midY-sin(i/36)*100);
+        final npttt = Offset(i,midY-cos(i/36+size.width/36*120/540)*(100));
+        canvas.drawLine(pttt, npttt, paint);
+        pttt = npttt;
+      }
+      paint.color=Colors.deepOrange;
+      var pt = Offset(0,(midY-cos(pi/3*2)*100));
+      for(double i=0;i<size.width;i+=0.1){
+        final npt = Offset(i,midY-cos(i/36+2*size.width/36*120/540)*100);
         canvas.drawLine(pt, npt, paint);
         pt = npt;
       }

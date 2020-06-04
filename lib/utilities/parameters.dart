@@ -41,35 +41,47 @@ import 'dart:math' as math;
 
 
     // Setters to retrieve the values from user
-    void setNumberOfBusBars({int numberOfBusBars}) => _numberOfBars=numberOfBusBars;
+    void setNOB({int numberOfBusBars}) => _numberOfBars=numberOfBusBars;
+
     void setPhase({int phase}) => _phase=phase;
+
     void setMaterial({MaterialCA selectedMaterial}) => _selectedMaterial=selectedMaterial;
+
     void setHeight({int height}) => _height=height;
+
     void setWidth({int width}) => _width=width;
+
     void setEnclosure({bool enclosure}) => _enclosure=enclosure;
-    void setInsideOverlay({bool insideOverlay}) => _insideOverlay=insideOverlay;
-    void setOutsideOverlay({bool outsideOverlay}) => _outsideOverlay=outsideOverlay;
-    void setEnclosurePerimeter({int enclosurePerimeter})=> _enclosurePerimeter=enclosurePerimeter;
+
+    void setIOverlay({bool insideOverlay}) => _insideOverlay=insideOverlay;
+
+    void setOOverlay({bool outsideOverlay}) => _outsideOverlay=outsideOverlay;
+
+    void setEnclPerimeter({int enclosurePerimeter})=> _enclosurePerimeter=enclosurePerimeter;
+
     void setFrequency({double frequency})=>_frequency=frequency;
-    void setBusBarOverlay({bool busBarOverlay})=>_barOverlay=busBarOverlay;
-    void setAmbientTemperature({double ambientTemperature}) => _ambientTemp=ambientTemperature;
+
+    void setBOverlay({bool busBarOverlay})=>_barOverlay=busBarOverlay;
+
+    void setATemp({double ambientTemperature}) => _ambientTemp=ambientTemperature;
+
     void setCurrent({int current})=>_current=current;
 
 
     //getters
-    int getNumberOfBusBars(){return _numberOfBars;}
+    int getNoB(){return _numberOfBars;}
     int getPhase(){return _phase;}
     int getHeight(){return _height;}
     int getWidth(){return _width;}
-    MaterialCA getSelectedMaterial(){return _selectedMaterial;}
-    int getEnclosurePerimeter(){return _enclosurePerimeter;}
-    bool getBusBarOverlay(){return _barOverlay;}
+    MaterialCA getMaterial(){return _selectedMaterial;}
+    int getEnclPerimeter(){return _enclosurePerimeter;}
+    bool getBOverlay(){return _barOverlay;}
     bool getEnclosure(){return _enclosure;}
-    bool getInsideOverlay(){return _insideOverlay;}
-    bool getOutsideOverlay(){return _outsideOverlay;}
+    bool getIOverlay(){return _insideOverlay;}
+    bool getOOverlay(){return _outsideOverlay;}
     double getFrequency(){return _frequency;}
-    double getAmbientTemperature(){return _ambientTemp;}
-    double getFinalTemperature(){return _finalTemperature;}
+    double getAmbTemp(){return _ambientTemp;}
+    double getFinalTemp(){return _finalTemperature;}
     int getCurrent(){return _current;}
     int getArea(){return _area;}
     double getSkinFactor(){return _skinFaktor;}
@@ -77,13 +89,15 @@ import 'dart:math' as math;
     double getSurface(){return _surface;}
     double getLosses(){return _losses;}
     double getTemperatureRise(){return _temperatureRise;}
+    double getThermalResistance(){return _thermalResistanceOfBusBars;}
+    double getThermalResistanceEnclosure(){return _thermalResistanceOfEnclosure;}
+    double getTotalThermalResistance(){return _totalThermalResistance;}
+    double getFinalTemperature(){return _finalTemperature; }
 
 
-    void calculateArea()=>_area=_height*_width;
+    void _calculateArea()=>_area=_height*_width;
 
-
-
-    void calculateSkinFactor(){
+    void _calculateSkinFactor(){
 
       if(_selectedMaterial==MaterialCA.aluminum){
         // SF= F/50 * (kFront* (.....+1)-kEnd )
@@ -99,11 +113,11 @@ import 'dart:math' as math;
           case 4:{kFront=4.8655; kEnd=3.763;}
           break;
         }
-        _skinFaktor=(_frequency/50)*
+        _skinFaktor=_frequency/50*
             (
                 kFront*
                     (
-                        -4.9014*math.pow(math.e, -19)*math.pow(_area, 5)
+                        -4.9014*math.pow(10, -19)*math.pow(_area, 5)
                             +7.255*math.pow(10, -15)*math.pow(_area, 4)
                             -4.0765*math.pow(10, -11)*math.pow(_area, 3)
                             +9.639*math.pow(10, -8)*math.pow(_area, 2)
@@ -129,25 +143,26 @@ import 'dart:math' as math;
           case 4:{kFront=4.4276; kEnd=3.2996;}
           break;
         }
-        _skinFaktor=(_frequency/50)*
-            (
+        _skinFaktor=(_frequency/50*
+            ((
                 kFront*
                     (
-                        -9.7104*math.pow(math.e, -19)*math.pow(_area, 5)
+                        -9.7104*math.pow(10, -19)*math.pow(_area, 5)
                             +1.2082*math.pow(10, -14)*math.pow(_area, 4)
                             -5.7278*math.pow(10, -11)*math.pow(_area, 3)
-                            +1.1125*math.pow(10, -8)*math.pow(_area, 2)
+                            +1.1125*math.pow(10, -7)*math.pow(_area, 2)
                             +7.0861*math.pow(10, -5)*_area
                             + 1
                     )
-                    -kEnd
-            );
+                    -kEnd)-1)+1
+        );
 
 
 
       }
     }
-    void calculateAlpha(){
+
+    void _calculateAlpha(){
       if(_selectedMaterial==MaterialCA.aluminum){
         if(_barOverlay==false){
           _area>=500?_alpha=7.34:_alpha=(-0.0145*_area)+14.603;
@@ -167,7 +182,8 @@ import 'dart:math' as math;
       }
 
     }
-    void calculateSurface(){
+
+    void _calculateSurface(){
       double kFactor;
       if(_selectedMaterial==MaterialCA.aluminum){
         if(_barOverlay==true){
@@ -224,10 +240,12 @@ import 'dart:math' as math;
       }
       _surface=_numberOfBars*_phase*((2*_height*kFactor+2*_width)/1000);
     }
-    void calculateThermalResistanceOfBusBars(){
+
+    void _calculateThermalResistanceOfBusBars(){
       _thermalResistanceOfBusBars=1/(_surface*_alpha);
     }
-    void calculateThermalResistanceOfEnclosure(){
+
+    void _calculateThermalResistanceOfEnclosure(){
       int xIn=1; int xOut=1;
       if(_enclosure==false){
         _thermalResistanceOfEnclosure=0;
@@ -238,10 +256,12 @@ import 'dart:math' as math;
         _thermalResistanceOfEnclosure=(1/(xOut*_enclosurePerimeter))+(1/(xIn*_enclosurePerimeter));
       }
     }
-    void calculateTotalThermalResistance(){
+
+    void _calculateTotalThermalResistance(){
       _totalThermalResistance=_thermalResistanceOfEnclosure+_thermalResistanceOfBusBars;
     }
-    void calculateLosses(){
+
+    void _calculateLosses(){
       double kFac=1;
       if(_selectedMaterial==MaterialCA.aluminum){
         kFac=0.02874;
@@ -252,24 +272,26 @@ import 'dart:math' as math;
       _losses=(((kFac*_phase)/_numberOfBars)/(_area*_skinFaktor*math.pow(_current, 2)));
 
     }
-    void calculateTemperatureRise(){
+
+    void _calculateTemperatureRise(){
       _temperatureRise=_totalThermalResistance*_losses;
     }
-    void calculateFinalTemperature(){
+
+    void _calculateFinalTemperature(){
       _finalTemperature=_ambientTemp+_temperatureRise;
     }
 
     void performThermalCalculations(){
-      calculateArea();
-      calculateSkinFactor();
-      calculateAlpha();
-      calculateSurface();
-      calculateThermalResistanceOfBusBars();
-      calculateThermalResistanceOfEnclosure();
-      calculateTotalThermalResistance();
-      calculateLosses();
-      calculateTemperatureRise();
-      calculateFinalTemperature();
+      _calculateArea();
+      _calculateSkinFactor();
+      _calculateAlpha();
+      _calculateSurface();
+      _calculateThermalResistanceOfBusBars();
+      _calculateThermalResistanceOfEnclosure();
+      _calculateTotalThermalResistance();
+      _calculateLosses();
+      _calculateTemperatureRise();
+      _calculateFinalTemperature();
     }
   }
 

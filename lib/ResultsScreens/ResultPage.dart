@@ -38,19 +38,55 @@ class ResultsPage extends StatelessWidget {
           pw.SizedBox(height: 10),
           pw.Bullet(
               text:
-              'Area= ${ThermalCalculator.parameters.getHeight().toString()} x ${ThermalCalculator.parameters.getWidth().toString()}='
-                  '${ThermalCalculator.parameters.getHeight() * ThermalCalculator.parameters.getWidth()}'
-          ,style: pw.TextStyle(fontSize: 30)),
+              'Area= ${ThermalCalculator.parameters.getArea().toString()}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+
           pw.Bullet(
               text:
-              'Sking factor = (f\/50) * Area^5 = '
-                  '${((ThermalCalculator.parameters.getFrequency().round()/50)*pow((ThermalCalculator.parameters.getHeight() *
-                  ThermalCalculator.parameters.getWidth()),5)).toStringAsFixed(4)}',
-              style: pw.TextStyle(fontSize: 30)),
-          pw.Bullet( text: 'Temperature = Current x Ambient Temperature = '
-              '${ThermalCalculator.parameters.getAmbientTemperature()} x ${ThermalCalculator.parameters.getAmbientTemperature()} '
-              '=${ThermalCalculator.parameters.getCurrent()*ThermalCalculator.parameters.getAmbientTemperature().round()}'
-              '', style: pw.TextStyle(fontSize: 30)),
+              'Skin Factor= ${ThermalCalculator.parameters.getSkinFactor().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Alpha= ${ThermalCalculator.parameters.getAlpha().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+
+          pw.Bullet(
+              text:
+              'Surface= ${ThermalCalculator.parameters.getSurface().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Thermal Resistance= ${ThermalCalculator.parameters.getThermalResistance().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Thermal Resistance of Enclosure= ${ThermalCalculator.parameters.getThermalResistanceEnclosure().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Total Thermal Resistance= ${ThermalCalculator.parameters.getTotalThermalResistance().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Losses= ${ThermalCalculator.parameters.getLosses().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Temperature Rise= ${ThermalCalculator.parameters.getTemperatureRise().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
+
+          pw.Bullet(
+              text:
+              'Final Temperature= ${ThermalCalculator.parameters.getFinalTemperature().toStringAsFixed(3)}'
+              ,style: pw.TextStyle(fontSize: 30)),
 
         ];
       }
@@ -114,7 +150,7 @@ class ResultsPage extends StatelessWidget {
                     DataRow(
                       cells: [
                         DataCell(Text('Number of Busbars'),),
-                        DataCell(Text('${ThermalCalculator.parameters.getNumberOfBusBars().toString()}'),)
+                        DataCell(Text('${ThermalCalculator.parameters.getNoB().toString()}'),)
                       ]
                     ),
                     DataRow(
@@ -126,14 +162,14 @@ class ResultsPage extends StatelessWidget {
                     DataRow(
                         cells: [
                           DataCell(Text('Material'),),
-                          DataCell(Text(ThermalCalculator.parameters.getSelectedMaterial()==MaterialCA.copper?'Copper':'Aluminum'),)
+                          DataCell(Text(ThermalCalculator.parameters.getMaterial()==MaterialCA.copper?'Copper':'Aluminum'),)
 
                         ]
                     ),
                     DataRow(
                         cells: [
                           DataCell(Text('Surface of the Busbar'),),
-                          DataCell(Text(ThermalCalculator.parameters.getBusBarOverlay()==true?'Painted':'Blank')),
+                          DataCell(Text(ThermalCalculator.parameters.getBOverlay()==true?'Painted':'Blank')),
                         ]
                     ),
                     DataRow(
@@ -157,7 +193,7 @@ class ResultsPage extends StatelessWidget {
                     DataRow(
                         cells: [
                           DataCell(Text('Ambient Temperature'),),
-                          DataCell(Text('${ThermalCalculator.parameters.getAmbientTemperature().toStringAsFixed(1)} °C'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getAmbTemp().toStringAsFixed(1)} °C'),)
                         ]
                     ),
                     DataRow(
@@ -175,7 +211,7 @@ class ResultsPage extends StatelessWidget {
                     ThermalCalculator.parameters.getEnclosure()?DataRow(
                         cells: [
                           DataCell(Text('Inside Surface of Enclosure'),),
-                          DataCell(Text(ThermalCalculator.parameters.getInsideOverlay()==true?'Painted':'Blank'),)
+                          DataCell(Text(ThermalCalculator.parameters.getIOverlay()==true?'Painted':'Blank'),)
                         ]
                     ):DataRow(
                         cells: [DataCell(Text('')),DataCell(Text(''))]
@@ -183,7 +219,7 @@ class ResultsPage extends StatelessWidget {
                     ThermalCalculator.parameters.getEnclosure()?DataRow(
                         cells: [
                           DataCell(Text('Outside Surface of Enclosure'),),
-                          DataCell(Text(ThermalCalculator.parameters.getOutsideOverlay()==true?'Painted':'Blank'),)
+                          DataCell(Text(ThermalCalculator.parameters.getOOverlay()==true?'Painted':'Blank'),)
                         ]
                     ):DataRow(
                       cells: [DataCell(Text('')),DataCell(Text(''))]
@@ -191,7 +227,7 @@ class ResultsPage extends StatelessWidget {
                     DataRow(
                         cells: [
                           DataCell(Text('Final Temperature'),),
-                          DataCell(Text('${ThermalCalculator.parameters.getFinalTemperature()}'),)
+                          DataCell(Text('${ThermalCalculator.parameters.getFinalTemp()}'),)
                         ]
                     ),
 
