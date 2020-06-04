@@ -1,16 +1,6 @@
 # orientierungsprojektss20
 
-A new Flutter application.
+The aim of the project is to create a multi-platform mobile application for both operating systems IOS and Android. The application calculates the thermal stress on Busbars. It attempts to abstract away the complicated process of the thermal calculations by offering a simple and easy-to-use user-interface that simplifies the procedure into a series of discrete steps of user Input guided by clear graphical representations. 
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
