@@ -54,6 +54,7 @@ class _RdInputPageState extends State<RdInputPage> {
         ),
         body: TabBarView(
       children: [
+        //here Give current and get temp
       SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(15),
@@ -122,7 +123,6 @@ class _RdInputPageState extends State<RdInputPage> {
                           // Navigate only if the value of the current is valid
                           print('The current is: $current');
                           tCalculator.parameters.setCurrent(current: current);
-
                           //Here Implement the Calculations
                           tCalculator.parameters.performThermalCalculations();
 
@@ -142,6 +142,7 @@ class _RdInputPageState extends State<RdInputPage> {
           ),
         ),
       ),
+        //here give Temp and get current
         SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(15),
@@ -202,18 +203,19 @@ class _RdInputPageState extends State<RdInputPage> {
                     ),
                     FlatButton(
                       child: Text('Next'),
+                      //here we should perform the calculations
                       onPressed: (){
                         _2formKey.currentState.validate();
                         _2formKey.currentState.save();
-                        print(enteredTemp);
-                        if(!checkTemp(enteredTemp.toString())) // Navigate only if the value of the Temp is valid
+
+                        if(!checkTemp(enteredTemp.toString())) //we chick here if the current input is valid
                           {
 
-                            // Navigate only if the value of the Temperature is valid
-                            print('The Temperature is: $enteredTemp');
+                            //Here Implement the Calculations
+                          tCalculator.parameters.performCurrentCalculations();
+                          // display the calculations
                             Navigator.pushNamed(context, ResultsPage.id,);
-
-                        }
+                          }
                         else
                           enteredTemp=enteredTemp;
 

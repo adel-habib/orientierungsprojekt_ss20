@@ -130,7 +130,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   children: <Widget>[
-                                    Text('Enclosure from inside:', style: TextStyle(fontSize: 17)),
+                                    Text('Inside:', style: TextStyle(fontSize: 17)),
                                     SizedBox(width: 30,),
                                     Wrap(
                                       spacing: 10,
@@ -176,7 +176,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: <Widget>[
-                                    Text('Enclosure from outside: ', style: TextStyle(fontSize: 17)),
+                                    Text('Outside: ', style: TextStyle(fontSize: 17)),
                                     SizedBox(width: 16,),
                                     Wrap(
                                       spacing: 10,

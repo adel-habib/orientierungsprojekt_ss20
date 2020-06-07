@@ -18,7 +18,7 @@ const int minAmbientTemp=-10;
 const int maxAmbientTemp=50;
 
 String kwelcomeText = 'The software calculates the temperature of busbar depending on their geometry,'
-    ' matirial and surface with and without enclosure related to load cutrent and its frequency.';
+    ' material and surface with and without enclosure related to load current and its frequency.';
 
 final kTitleStyle = TextStyle(
   color: Colors.white,

@@ -172,7 +172,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
           : kAluColor;
     }
     if (busbarOverlay) {
-      return Colors.grey;
+      return Colors.black;
     }
   }
 }

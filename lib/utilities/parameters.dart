@@ -38,6 +38,7 @@ import 'dart:math' as math;
     double _losses;
     double _temperatureRise;
     double _finalTemperature;
+    double newCurrent;
 
 
     // Setters to retrieve the values from user
@@ -292,6 +293,12 @@ import 'dart:math' as math;
       _calculateLosses();
       _calculateTemperatureRise();
       _calculateFinalTemperature();
+    }
+
+    void performCurrentCalculations(){
+      //implement the Regula Falsi
+      setCurrent(current: 10000);
+      performThermalCalculations();
     }
   }
 

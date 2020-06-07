@@ -38,55 +38,19 @@ class ResultsPage extends StatelessWidget {
           pw.SizedBox(height: 10),
           pw.Bullet(
               text:
-              'Area= ${ThermalCalculator.parameters.getArea().toString()}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-
+              'Area= ${ThermalCalculator.parameters.getHeight().toString()} x ${ThermalCalculator.parameters.getWidth().toString()}='
+                  '${ThermalCalculator.parameters.getHeight() * ThermalCalculator.parameters.getWidth()}'
+          ,style: pw.TextStyle(fontSize: 30)),
           pw.Bullet(
               text:
-              'Skin Factor= ${ThermalCalculator.parameters.getSkinFactor().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Alpha= ${ThermalCalculator.parameters.getAlpha().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-
-          pw.Bullet(
-              text:
-              'Surface= ${ThermalCalculator.parameters.getSurface().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Thermal Resistance= ${ThermalCalculator.parameters.getThermalResistance().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Thermal Resistance of Enclosure= ${ThermalCalculator.parameters.getThermalResistanceEnclosure().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Total Thermal Resistance= ${ThermalCalculator.parameters.getTotalThermalResistance().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Losses= ${ThermalCalculator.parameters.getLosses().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Temperature Rise= ${ThermalCalculator.parameters.getTemperatureRise().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
-
-          pw.Bullet(
-              text:
-              'Final Temperature= ${ThermalCalculator.parameters.getFinalTemperature().toStringAsFixed(3)}'
-              ,style: pw.TextStyle(fontSize: 30)),
+              'Sking factor = (f\/50) * Area^5 = '
+                  '${((ThermalCalculator.parameters.getFrequency().round()/50)*pow((ThermalCalculator.parameters.getHeight() *
+                  ThermalCalculator.parameters.getWidth()),5)).toStringAsFixed(4)}',
+              style: pw.TextStyle(fontSize: 30)),
+          pw.Bullet( text: 'Temperature = Current x Ambient Temperature = '
+              '${ThermalCalculator.parameters.getAmbTemp()} x ${ThermalCalculator.parameters.getAmbTemp()} '
+              '=${ThermalCalculator.parameters.getCurrent()*ThermalCalculator.parameters.getAmbTemp().round()}'
+              '', style: pw.TextStyle(fontSize: 30)),
 
         ];
       }

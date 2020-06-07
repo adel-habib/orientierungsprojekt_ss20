@@ -20,6 +20,7 @@ import 'InputScreens/NewDesignScreens/Enclosure.dart';
 import 'InputScreens/NewDesignScreens/CircumferencePage.dart';
 import 'InputScreens/NewDesignScreens/AmbientTemperaturePage.dart';
 import 'DummyScreen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -29,11 +30,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         primaryColor:Color(0xff121530),
-        scaffoldBackgroundColor: Color(0xff090F31),
+        scaffoldBackgroundColor: Color(0xff090F31), // Choose the background color Color(0xffHEX)
+
       ),
       initialRoute: LandingPage.id,
       routes: {
-        TryIt.id: (context) => TryIt(),
         PricingPage.id: (context) => PricingPage(),
         LandingPage.id: (context) => LandingPage(),
         RegistrationScreen.id: (context) => RegistrationScreen(),

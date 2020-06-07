@@ -115,7 +115,7 @@ class _FreqPageBodyState extends State<FreqPageBody> {
 
                                     hintText: 'Write two decimal-number',
                                     helperText: '0... 400 Hz',
-                                    labelText: 'Enter a specefic Value',
+                                    labelText: 'Enter a specific Value',
                                     suffixText: 'Hz',
 
                                   ),
