@@ -13,7 +13,7 @@ import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 
 class NBusBarsPage extends StatefulWidget {
-  static String id = 'nBusBarsPage';
+  static String id = 'nBusBarsPageId';
   @override
   _NBusBarsPageState createState() => _NBusBarsPageState();
 
@@ -87,7 +87,7 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                               print('The Number of Busbars is: $numberOfBusBars');
                             },
                           ),
-                          SizedBox(width: 15,),
+                          SizedBox(width: 10,),
                           RoundedButton(
                             icon: Icons.remove,
                             onPress: () {
@@ -103,8 +103,8 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 40,),
                     ProgressIdicator(currentStep: 0,),
+                    SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -120,7 +120,7 @@ class _NBusBarsPageState extends State<NBusBarsPage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The Number of Busbars is: $numberOfBusBars');
-                            tCalculator.parameters.setNOB(numberOfBusBars: numberOfBusBars);
+                            tCalculator.parameters.setNumberOfBusBars(numberOfBusBars: numberOfBusBars);
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => NPhasePage()),

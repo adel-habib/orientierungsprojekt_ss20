@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/nBusBarsPage.dart';
 import '../utilities/constants.dart';
 import 'regesterPage.dart';
 import '../gWidgets/Mybutton.dart';
@@ -110,7 +111,7 @@ class _LoginPage extends State<LoginPage> {
         final user = await _auth.signInWithEmailAndPassword(email: _email, password: _password);
         if(user!=null){
 
-          Navigator.pushNamed(context, StInputPage.id);
+          Navigator.pushNamed(context, NBusBarsPage.id);
         }
       }
       catch(e){

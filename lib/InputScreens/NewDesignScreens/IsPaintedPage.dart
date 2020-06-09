@@ -11,7 +11,7 @@ import 'package:orientierungsprojektss20/utilities/parameters.dart'
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class IsPaintedPage extends StatefulWidget {
-  static String id = 'IPid';
+  static String id = 'IsPaintedPageId';
   @override
   _IsPaintedPageState createState() => _IsPaintedPageState();
 }
@@ -89,7 +89,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                                             _value == 0
                                                 ? busbarOverlay = true
                                                 : busbarOverlay = false;
-                                            tCalculator.parameters.setBOverlay(
+                                            tCalculator.parameters.setBusBarOverlay(
                                                 busBarOverlay: busbarOverlay);
                                             busbarOverlay
                                                 ? print(
@@ -118,7 +118,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                       children: <Widget>[
                         SvgPicture.asset(
                           cDrawer.displayBusBarsWithArgument(
-                              tCalculator.parameters.getNoB()
+                              tCalculator.parameters.getNumberOfBusBars()
                           ),
                           height: 140,
                           color: barColor(),
@@ -149,7 +149,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
                         child: Text('Next'),
                         onPressed: () {
                           tCalculator.parameters
-                              .setBOverlay(busBarOverlay: busbarOverlay);
+                              .setBusBarOverlay(busBarOverlay: busbarOverlay);
                           Navigator.pushNamed(context, FrequencyPage.id);
                         },
                         color: kInactiveCardColour,
@@ -167,7 +167,7 @@ class _IsPaintedPageState extends State<IsPaintedPage> {
 
   Color barColor() {
     if (!busbarOverlay) {
-      return tCalculator.parameters.getMaterial() == MaterialCA.copper
+      return tCalculator.parameters.getSelectedMaterial() == MaterialCA.copper
           ? kCopperColor
           : kAluColor;
     }

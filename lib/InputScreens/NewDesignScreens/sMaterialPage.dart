@@ -10,7 +10,7 @@ import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculat
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class SMaterialPage extends StatefulWidget {
-  static String id = 'id';
+  static String id = 'MaterialPageId';
   @override
   _SMaterialPageState createState() => _SMaterialPageState();
 }
@@ -55,7 +55,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                  Text('Copper', style: TextStyle(fontSize: 22),),
                                 SizedBox(height: 30,),
                                 SvgPicture.asset(
-                                  cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNoB()),
+                                  cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNumberOfBusBars()),
                                   height: 100, color: kCopperColor,),
                                 SizedBox(height: 20,)
                                 // Icon(Icons.view_week, size: 100, color: kCopperColor,)
@@ -84,7 +84,7 @@ class _SMaterialPageState extends State<SMaterialPage> {
                                  Text('Aluminum', style: TextStyle(fontSize: 22),),
                                  SizedBox(height: 30,),
                                  SvgPicture.asset(
-                                   cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNoB()),
+                                   cDrawer.displayBusBarsWithArgument(tCalculator.parameters.getNumberOfBusBars()),
                                    height: 100, color: kAluColor,),
                                  SizedBox(height: 20,)
                                ],

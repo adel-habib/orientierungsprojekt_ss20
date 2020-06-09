@@ -12,7 +12,7 @@ import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class NPhasePage extends StatefulWidget {
 
-  static String id = 'NPhasePage';
+  static String id = 'NPhasePageId';
   @override
   _NPhasePageState createState() => _NPhasePageState();
 

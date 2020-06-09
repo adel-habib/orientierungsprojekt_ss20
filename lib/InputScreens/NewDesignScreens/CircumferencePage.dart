@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/AmbientTemperaturePage.dart';
 import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
-import '../Widgets/entry_card.dart';
 import 'package:flutter/services.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class EnclosurePerimeterPage extends StatefulWidget {
-  static String id = 'Enclosureparemeterid';
+  static String id = 'EnclosurePerimeterPageId';
   @override
   _EnclosurePerimeterPageState createState() => _EnclosurePerimeterPageState();
 }
@@ -123,7 +122,7 @@ class _EnclosurePerimeterPageState extends State<EnclosurePerimeterPage> {
                               _formKey.currentState.save();
                               print('The Perimeter of the enclosire is: $enclosurePerimeter');
                               if (validateHeight(enclosurePerimeterController.text))  {
-                                tCalculator.parameters.setEnclPerimeter(enclosurePerimeter: enclosurePerimeter.round());
+                                tCalculator.parameters.setEnclosurePerimeter(enclosurePerimeter: enclosurePerimeter.round());
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(builder: (context) => AmbientTemperaturePage()),

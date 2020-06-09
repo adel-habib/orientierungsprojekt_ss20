@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:orientierungsprojektss20/ResultsScreens/ResultPage.dart';
 import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculator;
+import 'package:orientierungsprojektss20/ResultsScreens/resultsContent.dart' as content;
 class RdInputPage extends StatefulWidget {
-  static String id='LastInputPage';
+  static String id='LastInputPageId';
 
   @override
   _RdInputPageState createState() => _RdInputPageState();
@@ -125,6 +125,7 @@ class _RdInputPageState extends State<RdInputPage> {
                           tCalculator.parameters.setCurrent(current: current);
                           //Here Implement the Calculations
                           tCalculator.parameters.performThermalCalculations();
+                          content.setResults();
 
 
                           Navigator.pushNamed(context, ResultsPage.id);
@@ -212,7 +213,6 @@ class _RdInputPageState extends State<RdInputPage> {
                           {
 
                             //Here Implement the Calculations
-                          tCalculator.parameters.performCurrentCalculations();
                           // display the calculations
                             Navigator.pushNamed(context, ResultsPage.id,);
                           }

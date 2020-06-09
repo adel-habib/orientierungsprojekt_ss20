@@ -8,7 +8,7 @@ import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculat
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class AmbientTemperaturePage extends StatefulWidget {
-  static String id = 'ambienttempid';
+  static String id = 'ambientTemperaturePageId';
   @override
   _AmbientTemperaturePageState createState() => _AmbientTemperaturePageState();
 }
@@ -103,7 +103,7 @@ class _AmbientTemperaturePageState extends State<AmbientTemperaturePage> {
                           child: Text('Next'),
                           onPressed: (){
                             print('The ambient temperature is: ${ambientTemp.toStringAsFixed(1)}');
-                            tCalculator.parameters.setATemp(ambientTemperature: ambientTemp);
+                            tCalculator.parameters.setAmbientTemperature(ambientTemperature: ambientTemp);
                             Navigator.pushNamed(context, RdInputPage.id);
                           },
                           color: kInactiveCardColour,

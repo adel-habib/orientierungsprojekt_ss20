@@ -47,7 +47,7 @@ class _WidthHeightPageState extends State<WidthHeightPage> {
               color: kInactiveCardColour,
               child: Padding(
                 padding: const EdgeInsets.all(8),
-                child: Text('Height and Width', style: TextStyle(color: Colors.white, fontSize: 25),),
+                child: Text('Height and Width ', style: TextStyle(color: Colors.white, fontSize: 25),),
               ),
             ),
           ),

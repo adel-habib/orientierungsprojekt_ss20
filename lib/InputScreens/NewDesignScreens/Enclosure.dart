@@ -10,7 +10,7 @@ import 'package:orientierungsprojektss20/utilities/parameters.dart' as tCalculat
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 class EnclosurePage extends StatefulWidget {
-  static String id = 'Enclosureid';
+  static String id = 'EnclosurePageId';
   @override
   _EnclosurePageState createState() => _EnclosurePageState();
 }
@@ -65,7 +65,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                               'Enclosure: ',
                               style: TextStyle(fontSize: 17),
                             ),
-                            SizedBox(width: 160,),
+                            SizedBox(width: 95,),
                             AnimatedContainer(
                               duration: Duration(milliseconds: 500),
                               height: 30,
@@ -131,7 +131,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                                 child: Row(
                                   children: <Widget>[
                                     Text('Inside:', style: TextStyle(fontSize: 17)),
-                                    SizedBox(width: 30,),
+                                    SizedBox(width: 80,),
                                     Wrap(
                                       spacing: 10,
                                       children: List<Widget>.generate(
@@ -177,7 +177,7 @@ class _EnclosurePageState extends State<EnclosurePage> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: <Widget>[
                                     Text('Outside: ', style: TextStyle(fontSize: 17)),
-                                    SizedBox(width: 16,),
+                                    SizedBox(width: 62,),
                                     Wrap(
                                       spacing: 10,
                                       children: List<Widget>.generate(
@@ -233,9 +233,9 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             ),
                             child: SvgPicture.asset(
                               cDrawer.displayBusBarsWithArgument(
-                                  tCalculator.parameters.getNoB()),
+                                  tCalculator.parameters.getNumberOfBusBars()),
                               height: 100,
-                              color: tCalculator.parameters.getBOverlay()?Colors.grey:tCalculator.parameters.getMaterial()
+                              color: tCalculator.parameters.getBusBarOverlay()?Colors.grey:tCalculator.parameters.getSelectedMaterial()
                                   ==MaterialCA.copper?kCopperColor:kAluColor,
                             ),
                           ),
@@ -264,8 +264,8 @@ class _EnclosurePageState extends State<EnclosurePage> {
                             print('Outside Overlay: $outsideOverlay');
                             print('Inside Overlay: $insideOverlay');
                             tCalculator.parameters.setEnclosure(enclosure: enclosure);
-                            tCalculator.parameters.setIOverlay(insideOverlay: insideOverlay);
-                            tCalculator.parameters.setOOverlay(outsideOverlay: outsideOverlay);
+                            tCalculator.parameters.setInsideOverlay(insideOverlay: insideOverlay);
+                            tCalculator.parameters.setOutsideOverlay(outsideOverlay: outsideOverlay);
 
                             if(enclosure){Navigator.push(
                               context,

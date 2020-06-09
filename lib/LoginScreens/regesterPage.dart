@@ -4,7 +4,7 @@ import 'package:orientierungsprojektss20/gWidgets/myAppBar.dart';
 import 'package:orientierungsprojektss20/utilities/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:orientierungsprojektss20/LoginScreens/login_screen.dart';
-
+import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static String id = 'regester_page_id';
@@ -27,6 +27,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      drawer: MyDrawer(),
       appBar: myAppBar(),
       body:  Container(
           padding:  EdgeInsets.all(20.0),

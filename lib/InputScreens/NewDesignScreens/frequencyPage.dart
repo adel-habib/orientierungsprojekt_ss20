@@ -11,7 +11,7 @@ import 'package:orientierungsprojektss20/gWidgets/ProgressIndicator.dart';
 import 'package:orientierungsprojektss20/gWidgets/drawer.dart';
 
 class FrequencyPage extends StatelessWidget {
-  static const id = 'FreqPageID';
+  static const id = 'FreqPageId';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +28,19 @@ class FreqPageBody extends StatefulWidget {
 
 class _FreqPageBodyState extends State<FreqPageBody> {
   double freq=50.00;
+
+  TextEditingController myFreqController;
+  void initState() {
+    myFreqController = TextEditingController(text: '$freq');
+    super.initState();
+
+  }
+  @override
+  void setState(fn) {
+    myFreqController = TextEditingController(text: '${freq.toStringAsFixed(2)}');
+    super.setState(fn);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -100,7 +113,7 @@ class _FreqPageBodyState extends State<FreqPageBody> {
                               child: Padding(
                                 padding: EdgeInsets.only(right: 40, left: 40, bottom: 5),
                                 child: TextFormField(
-                                  initialValue: freq.toStringAsFixed(2),
+                                  controller: myFreqController,
                                   keyboardType: TextInputType.numberWithOptions(signed: false),
                                   inputFormatters: [DecimalTextInputFormatter(decimalRange: 2),
                                   ],

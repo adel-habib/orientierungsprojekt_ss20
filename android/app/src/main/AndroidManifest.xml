@@ -9,7 +9,7 @@
 
 
         android:name="io.flutter.app.FlutterApplication"
-        android:label="orientierungsprojektss20"
+        android:label="Thermal Calculator"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

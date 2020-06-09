@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:orientierungsprojektss20/InputScreens/OldDesign/stInputPage.dart';
+import 'package:orientierungsprojektss20/InputScreens/NewDesignScreens/nBusBarsPage.dart';
 import 'package:orientierungsprojektss20/subscription_pages/Page_indicator.dart';
 import 'package:orientierungsprojektss20/subscription_pages/Plansmanager.dart';
 import 'Priceplans.dart';
@@ -86,7 +86,7 @@ class _PricingPageState extends State<PricingPage> {
             child: FlatButton(
 
               color: Color(0xff1A237E),
-              onPressed: () =>Navigator.pushNamed(context, StInputPage.id),
+              onPressed: () =>Navigator.pushNamed(context, NBusBarsPage.id),
               child: Text('Buy now'),
             ),
           )
